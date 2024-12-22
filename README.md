@@ -13,16 +13,17 @@ Thermostat|8|9
 ![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns007.jpg)
 # Features
 1. Fully functional HomeScreen with weather forecast from HomeAssistant, temperature display from internal sensor or home assistant entity and humidity display from specified sensor entity,
-2. Easy add widgets to control HomeAssistant entities and reacts when states change. Support of following widgets:
+2. Easy add widgets to control HomeAssistant entities and reacts when entities states change.
+3. Support of following widgets:
 - Single, double, triple and quad switch,
 - Curtain control,
 - RGB light,
 - Dimmable light,
 - CCT light,
 - RGBCCT light
-3. Thermostat with heating or cooling mode, hysteresis and Auto/Manual modes,
-4. Buzzer predefined sounds with single and loop playing,
-5. Commands model for easy control display using NodeRed flows.
+4. Thermostat with heating or cooling mode, hysteresis and Auto/Manual modes,
+5. Buzzer predefined sounds with single and loop playing,
+6. Commands model for easy control display using NodeRed flows.
 # Requirements
 1. NSPanel with <b><u>oryginal screen tft firmware</u></b>,
 2. MQTT Broker (see [mosquitto](https://mosquitto.org/download/)),
