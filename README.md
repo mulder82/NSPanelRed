@@ -3,7 +3,7 @@
 ![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns001.jpg)
 # Features
 1. Fully functional HomeScreen with weather forecast from HomeAssistant, temperature display from internal sensor or home assistant entity and humidity display from specified sensor entity,
-2. Easy add widgets to control HomeAssistant entities and reacts when for state changes. Support of following widgets:
+2. Easy add widgets to control HomeAssistant entities and reacts when states change. Support of following widgets:
 - Single, double, triple and quad switch,
 - Curtain control,
 - RGB light,
@@ -11,10 +11,10 @@
 - CCT light,
 - RGBCCT light
 3. Thermostat with heating or cooling mode, hysteresis and Auto/Manual modes,
-4. Buzzer sounds support with single and loop playing,
+4. Buzzer predefined sounds with single and loop playing,
 5. Commands model for easy control display using NodeRed flows.
 # Requirements
-1. NSPanel with <b>oryginal</b> screen tft firmware,
+1. NSPanel with <b><u>oryginal screen tft firmware</u></b>,
 2. MQTT Broker (see [mosquitto](https://mosquitto.org/download/)),
 3. HomeAssistant (see [homepage](https://www.home-assistant.io/)),
 4. Node-Red (see [homepage](https://nodered.org/)).
@@ -31,6 +31,7 @@ Before instalation use Ewelink app to update NSPanel to newest version.
 6. Configure subflow.
 # Configuration
 ## Main config page
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns001.jpg)
 Setting|Description
 --- | ---
 Name|Name of the node
