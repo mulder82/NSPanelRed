@@ -31,7 +31,9 @@ Before instalation use Ewelink app to update NSPanel to newest version.
 6. Configure subflow.
 # Configuration
 ## Main config page
-![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns001.jpg)
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/flowicon.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/flowconfig.jpg)
 Setting|Description
 --- | ---
 Name|Name of the node
