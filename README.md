@@ -60,8 +60,8 @@ thermostat.type|Type of thermostat, hot or cold|string|NO
 thermostat.hysteresis|Thermostat hysteresis|number|NO
 thermostat.entities|Array os entities to control (on/off) by thermostat|Array of string|NO
 widgets|Array of widget object (max 8)|Array of object|NO
-widget.index|Widget index on screen 1-8|number|YES
-widget.ctype|Widget type (device, group or scene)|YES
+widget.index|Widget index on screen|number (1-8)|YES
+widget.ctype|Widget type|device, group or scene|YES
 widget.uiid|Widget uiid (hswitch, vswitch, curtain, rgblight, dimmablelight, cctlight, rgbcctlight, acc), scene doesnt have uiid|string|YES
 widget.label|Widget label dispayed on screen (max 8 chars)|string|NO
 widget.entities|Array of entities controled by widget. State of all entities will be set by widget but state of only first entity in array will be reflected on screen|array of string|YES
