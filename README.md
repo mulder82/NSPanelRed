@@ -1,5 +1,7 @@
 # NSPanelRed
 ## Easy integration of NSPanel with HomeAssistant using NodeRed
+[![Watch the video](https://img.youtube.com/vi/9W-PcG0hgpw/hqdefault.jpg)](https://www.youtube.com/watch?v=9W-PcG0hgpw)
+
 ![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns001.jpg)
 # Features
 1. Fully functional HomeScreen with weather forecast from HomeAssistant, temperature display from internal sensor or home assistant entity and humidity display from specified sensor entity,
