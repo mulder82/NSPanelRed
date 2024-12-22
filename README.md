@@ -15,14 +15,20 @@
 5. Commands model for easy control display using NodeRed flows.
 # Requirements
 1. NSPanel with <b>oryginal</b> screen tft firmware,
-2. MQTT Broker (see mosquito),
-3. HomeAssistant (see homepage),
-4. Node-Red (see homepage).
+2. MQTT Broker (see [mosquitto](https://mosquitto.org/download/)),
+3. HomeAssistant (see [homepage](https://www.home-assistant.io/)),
+4. Node-Red (see [homepage](https://nodered.org/)).
 # Instalation
-1. Flash NSPanel ESP32 with tasmota (link),
-2. Connect tasmota to MQTT broker (link),
-3. Import NSPanelRed subflow to NodeRed (link),
-4. Configure subflow.
+Before instalation use Ewelink app to update NSPanel to newest version.
+1. Flash NSPanel ESP32 with tasmota ([link](https://templates.blakadder.com/sonoff_NSPanel.html)),
+2. Apply Tasmota template:
+```
+{"NAME":"NSPanel","GPIO":[0,0,0,0,3872,0,0,0,0,0,32,0,0,0,0,225,0,480,224,1,0,0,0,33,0,0,0,0,0,0,0,0,0,0,4736,0],"FLAG":0,"BASE":1,"CMND":"ADCParam1 2,11200,10000,3950 | Sleep 0 | BuzzerPWM 1"}
+```
+3. Upload modified driver [nspanel.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/nspanel.be) and [aoutoexec.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/autoexec.be) files to tasmota file system and restart NSPanel, 
+4. Connect tasmota to MQTT broker ([link](https://www.youtube.com/watch?v=rdCJGnWSJXE&t=47s)),
+5. Import [NSPanelRed subflow](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/nodered/NSPanel.json) to NodeRed ([link](https://nodered.org/docs/user-guide/editor/workspace/import-export)),
+6. Configure subflow.
 # Configuration
 ## Main config page
 Setting|Description
