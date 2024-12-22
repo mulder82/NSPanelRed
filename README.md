@@ -29,8 +29,8 @@ Thermostat|8|9
 2. MQTT Broker (see [mosquitto](https://mosquitto.org/download/)),
 3. HomeAssistant (see [homepage](https://www.home-assistant.io/)),
 4. Node-Red (see [homepage](https://nodered.org/)).
-# Instalation
-Before instalation use Ewelink app to update NSPanel to newest version.
+# NSPanel setup
+Before setup use Ewelink app to update NSPanel to newest version.
 1. Flash NSPanel ESP32 with tasmota ([link](https://templates.blakadder.com/sonoff_NSPanel.html)),
 2. Apply Tasmota template:
 ```
