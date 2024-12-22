@@ -53,7 +53,7 @@ MQTT|MQTT configuration node
 HAServer|HomeAssistant server configuration node
 ## Configuration JSON
 
-Example JSON config:
+### Example JSON config:
 ```
 {
     "debug": false,
@@ -150,7 +150,7 @@ Example JSON config:
     ]
 }
 ```
-
+## JSON Config description
 Name|Description|Value|Required
 --- | --- | --- | ---
 name|Panel name (for commands)|string|NO
