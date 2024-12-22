@@ -37,7 +37,7 @@ Before setup use Ewelink app to update NSPanel to newest version.
 {"NAME":"NSPanel","GPIO":[0,0,0,0,3872,0,0,0,0,0,32,0,0,0,0,225,0,480,224,1,0,0,0,33,0,0,0,0,0,0,0,0,0,0,4736,0],"FLAG":0,"BASE":1,"CMND":"ADCParam1 2,11200,10000,3950 | Sleep 0 | BuzzerPWM 1"}
 ```
 3. Upload modified driver [nspanel.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/nspanel.be) and [aoutoexec.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/autoexec.be) files to tasmota file system and restart NSPanel, 
-4. Connect tasmota to MQTT broker ([link](https://www.youtube.com/watch?v=rdCJGnWSJXE&t=47s)),
+4. Connect tasmota to MQTT broker ([link](https://www.youtube.com/watch?v=rdCJGnWSJXE)),
 5. Import [NSPanelRed subflow](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/nodered/NSPanel.json) to NodeRed ([link](https://nodered.org/docs/user-guide/editor/workspace/import-export)),
 6. Configure subflow.
 # Configuration
@@ -52,6 +52,105 @@ Config|Configuration JSON
 MQTT|MQTT configuration node
 HAServer|HomeAssistant server configuration node
 ## Configuration JSON
+
+Example JSON config:
+```
+{
+    "debug": false,
+    "tele_topic": "NSPanel/tele/",
+    "cmnd_topic": "NSPanel/cmnd/",
+    "weather": "weather.forecast_dom",
+    "temperature": "sensor.sypialnia_temperatura_wilgotnosc_temperature",
+    "temperature_unit": "C",
+    "temperature_calibration": 0,
+    "temperature_multipler": 10,
+    "humidity": "sensor.sypialnia_temperatura_wilgotnosc_humidity",
+    "eco_mode": 0,
+    "thermostat": {
+        "type": "hot",
+        "hysteresis": 1,
+        "entities": [
+            "switch.sypialnia_gniazdko_szafka_led"
+        ]
+    },
+    "widgets": [
+        {
+            "index": 1,
+            "ctype": "device",
+            "uiid": "vswitch",
+            "label": "Sufit",
+            "entities": [
+                "switch.sypialnia_przekaznik_oswietlenie_sufit_left",
+                "switch.sypialnia_przekaznik_oswietlenie_sufit_right"
+            ]
+        },
+        {
+            "index": 2,
+            "ctype": "device",
+            "uiid": "hswitch",
+            "label": "Wiatrak",
+            "entities": [
+                "switch.sypialnia_gniazdko_wentylator"
+            ]
+        },
+        {
+            "index": 3,
+            "ctype": "device",
+            "uiid": "rgbcctlight",
+            "label": "Candela",
+            "entities": [
+                "light.sypialnia_candela"
+            ]
+        },
+        {
+            "index": 4,
+            "ctype": "device",
+            "uiid": "rgblight",
+            "label": "C.lamp",
+            "entities": [
+                "light.sypialnia_corner_lamp"
+            ]
+        },
+        {
+            "index": 5,
+            "ctype": "device",
+            "uiid": "hswitch",
+            "label": "Lampa",
+            "entities": [
+                "switch.sypialnia_listwa_ldnio_lampa"
+            ]
+        },
+        {
+            "index": 6,
+            "ctype": "device",
+            "uiid": "vswitch",
+            "label": "Szafka",
+            "entities": [
+                "switch.sypialnia_gniazdko_szafka_led"
+            ]
+        },
+        {
+            "index": 7,
+            "ctype": "device",
+            "uiid": "curtain",
+            "label": "Rolety",
+            "entities": [
+                "cover.sypialnia_zaluzja_lewa",
+                "cover.sypialnia_zaluzja_prawa"
+            ]
+        },
+        {
+            "index": 8,
+            "ctype": "scene",
+            "label": "Klimat",
+            "entities": [
+                "scene.klimatycznie"
+            ]
+        }
+    ]
+}
+```
+
 Name|Description|Value|Required
 --- | --- | --- | ---
 name|Panel name (for commands)|string|NO
