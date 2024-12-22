@@ -1,0 +1,9 @@
+Polecenia do zmiany tonu buzzera:
+backlog pwmfrequency 977; Buzzer 1,4,1
+
+Polecenie do skrócenia czasu reakcji przycisków:
+SetOption13 1	
+Allow immediate action on single button press
+0 = single, multi-press and hold button actions (default)
+1 = only single press action for immediate response (i.e., disable multipress detection). 
+Disable by holding for 4 x button hold time (see SetOption32).

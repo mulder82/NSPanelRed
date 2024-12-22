@@ -1,0 +1,2569 @@
+[
+    {
+        "id": "9f35391991156165",
+        "type": "subflow",
+        "name": "NSPanel",
+        "info": "**NSPanel driver v1.0**\r\n---\r\n[Project homepage on GitHub](https://github.com/mulder82/NSPanelRed)\r\n\r\n\r\n\r\n\r\n",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 2520,
+                "wires": [
+                    {
+                        "id": "a7d0a9325425f560"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 740,
+                "y": 2400,
+                "wires": [
+                    {
+                        "id": "aa91ec6527b9c6bd",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [
+            {
+                "name": "config",
+                "type": "json",
+                "value": "{\"name\":\"NSPanel << Unique panel name (optional)\",\"group\":\"SP << panel group (optional)\",\"debug\":false,\"eco_mode\":0,\"tele_topic\":\"NSPanel/tele/ << your tele tasmota topic\",\"cmnd_topic\":\"NSPanel/cmnd/ << your cmnd tasmota topic\",\"weather\":\"weather. << your weather forecast entity id\",\"temperature\":\"internal << internal sensor or entity id for external sensor\",\"temperature_unit\":\"C << C or F\",\"temperature_calibration\":0,\"temperature_multipler\":10,\"humidity\":\"sensor. << your humidity sensor entity id\",\"thermostat\":{\"type\":\"hot << hot or cold (or remove whole thermostat to disable)\",\"hysteresis\":1,\"entities\":[\"<< array of entities to control with thermostat >>\"]},\"widgets\":[{\"index\":1,\"ctype\":\"device << device/group/scene\",\"uiid\":\"hswitch << hswitch/vswitch/curtain/rgblight/dimmablelight/cctlight/rgbcctlight/acc\",\"label\":\"Widget#1 << widget label (max 8 chars)\",\"entities\":[\"<< array of entities to control with widget >>\",\"max 4 entities for hswitch and vswitch\",\"max 10 entities for other widgets\",\"for switches: state of all entities will be displayed\",\"for other widgets: state of first entity will be displayed\",\"but changes on screen will affect all entities\"]}]}",
+                "ui": {
+                    "icon": "font-awesome/fa-gears",
+                    "label": {
+                        "en-US": "Config"
+                    },
+                    "type": "input",
+                    "opts": {
+                        "types": [
+                            "json"
+                        ]
+                    }
+                }
+            },
+            {
+                "name": "mqtt_broker",
+                "type": "mqtt-broker",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-envelope-o",
+                    "label": {
+                        "en-US": "MQTT"
+                    },
+                    "type": "conf-types"
+                }
+            },
+            {
+                "name": "ha_server",
+                "type": "server",
+                "value": "",
+                "ui": {
+                    "icon": "font-awesome/fa-home",
+                    "label": {
+                        "en-US": "HAServer"
+                    },
+                    "type": "conf-types"
+                }
+            }
+        ],
+        "meta": {},
+        "color": "#3FADB5",
+        "inputLabels": [
+            "MSG"
+        ],
+        "outputLabels": [
+            "OUTPUT"
+        ],
+        "icon": "font-awesome/fa-desktop",
+        "status": {
+            "x": 780,
+            "y": 2460,
+            "wires": [
+                {
+                    "id": "257dfc2852865e2b",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "b1c20e04a5b5db07",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "IO",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "e6fa51d7e91ac3d7",
+            "fa3c60f50bb350c0",
+            "daad51ec0b59ab8e",
+            "7c2029ebe3c7477a",
+            "da6d628757558b6f",
+            "08c2e9116f950e54",
+            "5e4ac481f20fc71e",
+            "2e8355f2345aaf13",
+            "6474739c755289e9",
+            "fc832e54ea61faca",
+            "11b681b1dbcd85bf",
+            "f28ff34f0f54aef2",
+            "8238904ede2514ce",
+            "5a88cc65bb50bd45",
+            "02afa6c793543f15",
+            "97000ce7dfad5015",
+            "3a57b51c2a595730",
+            "12d2e216025bf707",
+            "45487c4606ed0ad0",
+            "80c9147698e530bc",
+            "cdec327aeb5a1a0a",
+            "416ba7313f08405b",
+            "05e199585ee9a632",
+            "95a033c29141f87a",
+            "89cab43f83df1dea",
+            "87aa2eac97992ac9",
+            "28bbf25b9e41f399",
+            "01833fad2c19b2e2",
+            "5eaaec141378f30f",
+            "ef95d98895a0988b",
+            "ab5a1731290c6151",
+            "9e0ac6c4825e3c7f"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 812,
+        "h": 442
+    },
+    {
+        "id": "b47d7790b307ad42",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Initialize widgets",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "7f98a7890c750372",
+            "1642bf038d6d97b7",
+            "52eb48a50dc4b250"
+        ],
+        "x": 14,
+        "y": 1159,
+        "w": 812,
+        "h": 82
+    },
+    {
+        "id": "a869d1443e49c3ad",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Home screen",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "42097639cbc3ccba",
+            "bf46eda51db2de7c",
+            "824004a32967afd1",
+            "f4541a7c148a2c08",
+            "ea58cb1227637227",
+            "10fbb441b875b4aa",
+            "cf1444ad2293e75e",
+            "5b98a530790d17a4",
+            "d222f733fd1b2bb5",
+            "321ec40cb1c8adef",
+            "3e4f98e8c0f622bd",
+            "56678d1d065ee01c",
+            "d95edd29b2f37bb8",
+            "39ed3b7072df4dc0",
+            "981a7ad58d81bd5e",
+            "6f3c0e6c1e3eb00d",
+            "a9e5c7cb0f41d9f5",
+            "eb61a580774179a6",
+            "9d249c0c43c85023",
+            "3c71950ea30966bc",
+            "4cc1f8773406283a",
+            "ee34f725eacfcbd3"
+        ],
+        "x": 14,
+        "y": 659,
+        "w": 812,
+        "h": 482
+    },
+    {
+        "id": "00bb2c83f2b56264",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Status",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "f0acaa48711bdcf5",
+            "2d3fabddccadb2cf",
+            "fa7e2ad6db1fc601",
+            "dab0b9345dcfcf30",
+            "0ca400f856eb035d",
+            "3d48f15d69eeda54",
+            "c874d8ffd7c0f51f",
+            "e0719eb2843021f9",
+            "ffdcb74f97f4a717",
+            "898aa87ee65ad5c4",
+            "229f388d4580b131",
+            "68e2cbd122a24bdf",
+            "bda40dab8f043cb8",
+            "8d16d782e304fae2"
+        ],
+        "x": 14,
+        "y": 1919,
+        "w": 812,
+        "h": 282
+    },
+    {
+        "id": "4c7aaa55729dde21",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Flow IO",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "257dfc2852865e2b",
+            "9df46d2fd94fcb44",
+            "3cd7723a58cca46d",
+            "6881cc2777d451ee",
+            "aa91ec6527b9c6bd",
+            "a7d0a9325425f560"
+        ],
+        "x": 14,
+        "y": 2359,
+        "w": 812,
+        "h": 242
+    },
+    {
+        "id": "b10a5802f98e7086",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "HomeAssistant -> Screen",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "f0ec80ef3a3dc328",
+            "9082724e0bb732b9",
+            "134110c3df115837",
+            "b2538b3353040a49",
+            "0c8f2abbfe9e1b86",
+            "1a8f16c5d5d128a9",
+            "bb41aaec7d4c76e1",
+            "e611acbec1f874d5",
+            "6bdcf8d7050f8eae"
+        ],
+        "x": 14,
+        "y": 1259,
+        "w": 812,
+        "h": 222
+    },
+    {
+        "id": "58f9bd5224e48627",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Thermostat",
+        "style": {
+            "label": true,
+            "fill": "#d1d1d1",
+            "color": "#000000"
+        },
+        "nodes": [
+            "c2774455db3acd5f",
+            "04ba2beadc1cfcd9",
+            "7b72e6dedc1b8c91",
+            "063a7e1e76a74d07",
+            "8b66e2f0fd02c9c2",
+            "d0fd4e028ac8cce4"
+        ],
+        "x": 14,
+        "y": 1739,
+        "w": 812,
+        "h": 162
+    },
+    {
+        "id": "8c75219a5ab76f6b",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Screen -> HomeAssistant",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "581e49874bd46cb0",
+            "bb03fcc0f1da11f7",
+            "8d2f93da0a31839a",
+            "ce0d5e0707fecd3c",
+            "febf12908f01ac31",
+            "2b37f5e6b2e46ccf",
+            "7e93109cf311be20",
+            "297cb82b43162ce1"
+        ],
+        "x": 14,
+        "y": 1499,
+        "w": 812,
+        "h": 222
+    },
+    {
+        "id": "b49ddf06c02d88a3",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Commands",
+        "style": {
+            "fill": "#d1d1d1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "88744b7dde4d2630",
+            "c5d95f86cb576540",
+            "c6e3e36a364b81f8",
+            "cdb046f7943f392d",
+            "c06725e093e75326"
+        ],
+        "x": 14,
+        "y": 2219,
+        "w": 812,
+        "h": 122
+    },
+    {
+        "id": "69ee905a5ef5b9f9",
+        "type": "group",
+        "z": "9f35391991156165",
+        "name": "Initialize engine",
+        "style": {
+            "label": true,
+            "fill": "#d1d1d1",
+            "color": "#000000"
+        },
+        "nodes": [
+            "9e891e6cf8edef3d",
+            "42a0c56a0a8c7852",
+            "902908f44a4f0398",
+            "4e16bb111b63e3a5",
+            "3a3564506f6149e9"
+        ],
+        "x": 14,
+        "y": 479,
+        "w": 812,
+        "h": 162
+    },
+    {
+        "id": "e6fa51d7e91ac3d7",
+        "type": "inject",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Init 0.1",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 60,
+        "wires": [
+            [
+                "9e0ac6c4825e3c7f"
+            ]
+        ]
+    },
+    {
+        "id": "fa3c60f50bb350c0",
+        "type": "mqtt in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "RESULT",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "${mqtt_broker}",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "5e4ac481f20fc71e"
+            ]
+        ]
+    },
+    {
+        "id": "daad51ec0b59ab8e",
+        "type": "mqtt in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "LWT",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "${mqtt_broker}",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "2e8355f2345aaf13"
+            ]
+        ]
+    },
+    {
+        "id": "7c2029ebe3c7477a",
+        "type": "mqtt out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Send",
+        "topic": "",
+        "qos": "",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "${mqtt_broker}",
+        "x": 750,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "da6d628757558b6f",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "RESULT topic",
+        "func": "const nsTopics = flow.get(\"nsTopics\");\nreturn nsTopics.buildSubscribeMsg(nsTopics.RESULT);",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "fa3c60f50bb350c0"
+            ]
+        ]
+    },
+    {
+        "id": "08c2e9116f950e54",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "LWT topic",
+        "func": "const nsTopics = flow.get(\"nsTopics\");\nreturn nsTopics.buildSubscribeMsg(nsTopics.LWT);",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "daad51ec0b59ab8e"
+            ]
+        ]
+    },
+    {
+        "id": "5e4ac481f20fc71e",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnResult",
+        "mode": "link",
+        "links": [
+            "fa7e2ad6db1fc601",
+            "581e49874bd46cb0",
+            "5eaaec141378f30f",
+            "7b72e6dedc1b8c91"
+        ],
+        "x": 740,
+        "y": 220,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "2e8355f2345aaf13",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnLWT",
+        "mode": "link",
+        "links": [
+            "6474739c755289e9"
+        ],
+        "x": 740,
+        "y": 260,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "7f98a7890c750372",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b47d7790b307ad42",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 1200,
+        "wires": [
+            [
+                "1642bf038d6d97b7"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "1642bf038d6d97b7",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b47d7790b307ad42",
+        "name": "AddWidgets",
+        "func": "const config = env.get(\"config\");\nconst nsPanel = flow.get(\"nsPanel\");\n\n//If no widgets\nif(config.widgets==undefined)\n{\n    nsPanel.widgets.clear();\n    return null;\n}\n\nfor(let indx=1;indx<=8;indx++)\n{\n    var cwidget = config.widgets.find((w)=>w.index==indx);\n    if(cwidget==undefined)\n    {\n        nsPanel.widgets.remove(indx);\n    }\n    else\n    {\n        nsPanel.widgets.add(cwidget);\n    }\n}\n\nreturn ({\"widgets\":nsPanel.widgets.getAll()});",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1200,
+        "wires": [
+            [
+                "52eb48a50dc4b250"
+            ]
+        ]
+    },
+    {
+        "id": "52eb48a50dc4b250",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b47d7790b307ad42",
+        "name": "UpdateWidgets",
+        "mode": "link",
+        "links": [
+            "9082724e0bb732b9"
+        ],
+        "x": 720,
+        "y": 1200,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "42097639cbc3ccba",
+        "type": "inject",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "10min Interval",
+        "props": [],
+        "repeat": "600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 700,
+        "wires": [
+            [
+                "cf1444ad2293e75e"
+            ]
+        ]
+    },
+    {
+        "id": "6474739c755289e9",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnLWT",
+        "links": [
+            "2e8355f2345aaf13"
+        ],
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "fc832e54ea61faca"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "fc832e54ea61faca",
+        "type": "switch",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Online?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Online",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 320,
+        "y": 360,
+        "wires": [
+            [
+                "02afa6c793543f15"
+            ],
+            [
+                "80c9147698e530bc"
+            ]
+        ]
+    },
+    {
+        "id": "bf46eda51db2de7c",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "OnSENSOR",
+        "links": [
+            "87aa2eac97992ac9"
+        ],
+        "x": 110,
+        "y": 940,
+        "wires": [
+            [
+                "d222f733fd1b2bb5"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "824004a32967afd1",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "ExtractTemp",
+        "func": "const config = env.get(\"config\");\n\n//External temp (undefined not allowed - check in validation)\nif(config.temperature != \"internal\")\n{\n    const states = global.get(\"homeassistant\").homeAssistant.states;\n    var temp = states[config.temperature].state;\n    return ({payload:temp});\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 980,
+        "wires": [
+            [
+                "d95edd29b2f37bb8"
+            ]
+        ]
+    },
+    {
+        "id": "11b681b1dbcd85bf",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnInit",
+        "mode": "link",
+        "links": [
+            "05e199585ee9a632",
+            "0ca400f856eb035d",
+            "8238904ede2514ce",
+            "9e891e6cf8edef3d",
+            "f28ff34f0f54aef2",
+            "c06725e093e75326"
+        ],
+        "x": 750,
+        "y": 60,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "f28ff34f0f54aef2",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "da6d628757558b6f"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "8238904ede2514ce",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "08c2e9116f950e54"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "5a88cc65bb50bd45",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnPanelOnline",
+        "mode": "link",
+        "links": [
+            "7f98a7890c750372",
+            "f4541a7c148a2c08",
+            "e0719eb2843021f9",
+            "321ec40cb1c8adef",
+            "c2774455db3acd5f",
+            "229f388d4580b131"
+        ],
+        "x": 720,
+        "y": 340,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "f4541a7c148a2c08",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 780,
+        "wires": [
+            [
+                "5b98a530790d17a4",
+                "ea58cb1227637227",
+                "cf1444ad2293e75e",
+                "39ed3b7072df4dc0",
+                "a9e5c7cb0f41d9f5"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "ea58cb1227637227",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SetDateTime",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nnsPanel.homeScreen.setDateTime();\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "02afa6c793543f15",
+        "type": "delay",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 340,
+        "wires": [
+            [
+                "5a88cc65bb50bd45"
+            ]
+        ]
+    },
+    {
+        "id": "10fbb441b875b4aa",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateTemp",
+        "links": [
+            "3c71950ea30966bc",
+            "5b98a530790d17a4"
+        ],
+        "x": 110,
+        "y": 980,
+        "wires": [
+            [
+                "824004a32967afd1"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "cf1444ad2293e75e",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SetWeather",
+        "func": "const config = env.get(\"config\");\nconst nsPanel = flow.get(\"nsPanel\");\n\nif(config.weather==undefined)\n    return null;\n\nconst states = global.get(\"homeassistant\").homeAssistant.states;\nconst weather = states[config.weather];\n\nif(weather==undefined)\n    return null;\n\nvar condition = 1;\nswitch (weather.state)\n{\n    case \"sunny\":\n    case \"clear-night\":\n        condition=1; //sunny\n        break;\n\n    case \"cloudy\":\n        condition=7; //cloud+blue cloud\n        break;\n\n    case \"fog\":\n        condition= 11; //cloud+fog\n        break;\n\n    //grad\n    case \"hail\":\n    case \"snowy-rainy\":\n        condition= 29; //grad z deszczem\n        break;\n\n    case \"lighting\":\n    case \"lightning-rainy\":\n        condition= 15; //cloud rain lightning \n        break;\n\n    case \"partlycloudy\":\n        condition= 2; //sun+cloud\n        break;\n\n    //ulewa\n    case \"pouring\":\n    case \"rainy\":\n        condition=12; //cloud + rain\n        break;\n\n    case \"snowy\":\n        condition = 22; //cloud + 3 snowflakes\n        break;\n\n    case \"windy\":\n    case \"windy-variant\":\n        condition= 32; //wind\n        break;\n    \n    //exceptional and others\n    default:\n        condition=31; // blue thermostat\n}\n\nvar wattr = weather.attributes;\nvar temp = wattr.temperature;\nvar tempMin =wattr.forecast[0].templow;\nvar tempMax =wattr.forecast[0].temperature;\n\nnsPanel.homeScreen.setWeather(condition,temp,tempMin,tempMax);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "5b98a530790d17a4",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateTemp",
+        "mode": "link",
+        "links": [
+            "10fbb441b875b4aa"
+        ],
+        "x": 730,
+        "y": 780,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "97000ce7dfad5015",
+        "type": "debug",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "NSPanel - Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f0acaa48711bdcf5",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "SetStatus",
+        "func": "return {payload:{\n    \"fill\":\"red\",\n    \"shape\":\"ring\",\n    \"text\":\"disconnected\"}};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 2080,
+        "wires": [
+            [
+                "c874d8ffd7c0f51f"
+            ]
+        ]
+    },
+    {
+        "id": "3a57b51c2a595730",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnPanelOffline",
+        "mode": "link",
+        "links": [
+            "2d3fabddccadb2cf",
+            "8d16d782e304fae2"
+        ],
+        "x": 720,
+        "y": 380,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "2d3fabddccadb2cf",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnPanelOffline",
+        "links": [
+            "3a57b51c2a595730"
+        ],
+        "x": 120,
+        "y": 2080,
+        "wires": [
+            [
+                "f0acaa48711bdcf5"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "fa7e2ad6db1fc601",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnRESULT",
+        "links": [
+            "5e4ac481f20fc71e"
+        ],
+        "x": 110,
+        "y": 2040,
+        "wires": [
+            [
+                "dab0b9345dcfcf30"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "dab0b9345dcfcf30",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "SetStatus",
+        "func": "var fv;\nif((fv=msg.payload.NSPanel?.firmware)!=undefined)\n{\n    return {payload:{\n        \"fill\":\"green\",\n        \"shape\":\"dot\",\n        \"text\":`connected ${fv}`}};\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 2040,
+        "wires": [
+            [
+                "c874d8ffd7c0f51f"
+            ]
+        ]
+    },
+    {
+        "id": "0ca400f856eb035d",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 90,
+        "y": 2000,
+        "wires": [
+            [
+                "3d48f15d69eeda54"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "3d48f15d69eeda54",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "SetStatus",
+        "func": "return {payload:{\n    \"fill\":\"blue\",\n    \"shape\":\"ring\",\n    \"text\":\"connecting\"}};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 2000,
+        "wires": [
+            [
+                "c874d8ffd7c0f51f"
+            ]
+        ]
+    },
+    {
+        "id": "257dfc2852865e2b",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "SetStatus",
+        "links": [
+            "c874d8ffd7c0f51f"
+        ],
+        "x": 100,
+        "y": 2460,
+        "wires": [
+            []
+        ],
+        "l": true
+    },
+    {
+        "id": "c874d8ffd7c0f51f",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "SetStatus",
+        "mode": "link",
+        "links": [
+            "257dfc2852865e2b"
+        ],
+        "x": 740,
+        "y": 2040,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "f0ec80ef3a3dc328",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "Foreach",
+        "func": "msg.widgets.forEach((widget)=> \n{\n    msg.widget = widget;\n    if(widget.ctype==\"scene\")\n    {\n        node.send([msg,null]);\n    }\n    else\n    {\n        node.send([null,msg]);\n    }\n});\n\nreturn null;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1340,
+        "wires": [
+            [
+                "bb41aaec7d4c76e1"
+            ],
+            [
+                "1a8f16c5d5d128a9"
+            ]
+        ],
+        "outputLabels": [
+            "Scene",
+            "Device / Group"
+        ]
+    },
+    {
+        "id": "9082724e0bb732b9",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "UpdateWidgets",
+        "links": [
+            "52eb48a50dc4b250"
+        ],
+        "x": 120,
+        "y": 1320,
+        "wires": [
+            [
+                "f0ec80ef3a3dc328"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "134110c3df115837",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "switches",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\n\nvar widget = msg.widget;\nvar params={};\n\nif(widget.entities.length==1)\n{\n    params={\"switch\":widget.entities[0].stateOnOff};\n}\nelse\n{\n    var switches=[];\n    for(let indx=0;indx<widget.entities.length;indx++)\n    {\n        if(msg.entity==undefined || msg.entity == widget.entities[indx].id)\n        {\n            switches.push({\"switch\":widget.entities[indx].stateOnOff,\"outlet\":indx})   \n        } \n    }\n    params={\"switches\":switches};\n}\n\nwidget.update(params);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "b2538b3353040a49",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "curtain",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\n\nvar widget = msg.widget;\nvar params={};\n\nvar attr = widget.entities[0].attributes;\nparams.setclose= helpers.invertValueInRange(attr.current_position,0,100);\nwidget.update(params);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "0c8f2abbfe9e1b86",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "acc",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\n\nvar widget = msg.widget;\nvar params={};\n\nvar attr = widget.entities[0].attributes;\n//params.setclose= helpers.invertValueInRange(attr.current_position,0,100);\n\nwidget.update(params);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "1a8f16c5d5d128a9",
+        "type": "switch",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "uiid",
+        "property": "widget.uiid",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "9",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "lte",
+                "v": "69",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "151",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 490,
+        "y": 1380,
+        "wires": [
+            [
+                "134110c3df115837"
+            ],
+            [
+                "b2538b3353040a49"
+            ],
+            [
+                "6bdcf8d7050f8eae"
+            ],
+            []
+        ],
+        "outputLabels": [
+            "<=9 Switches",
+            "==11 Curtain",
+            "<=69 Lights",
+            "==151 Air Conditioner Controller"
+        ]
+    },
+    {
+        "id": "d222f733fd1b2bb5",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "ExtractTemp",
+        "func": "const temp = msg.payload.ANALOG?.Temperature1;\nreturn ({payload:temp});",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 940,
+        "wires": [
+            [
+                "d95edd29b2f37bb8"
+            ]
+        ]
+    },
+    {
+        "id": "12d2e216025bf707",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "SendCMND",
+        "links": [
+            "56678d1d065ee01c",
+            "4e16bb111b63e3a5"
+        ],
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "45487c4606ed0ad0",
+                "01833fad2c19b2e2"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "45487c4606ed0ad0",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "SendCMND",
+        "func": "return{\"topic\":msg.cmnd,\"payload\":msg.payload};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "7c2029ebe3c7477a"
+            ]
+        ]
+    },
+    {
+        "id": "321ec40cb1c8adef",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 900,
+        "wires": [
+            [
+                "3e4f98e8c0f622bd"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "3e4f98e8c0f622bd",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "TelePeriod if temp internal",
+        "func": "const config = env.get(\"config\");\nconst nsTopics = flow.get(\"nsTopics\");\n\nif(config.temperature==\"internal\")\n{\n    return nsTopics.buildCmndMsg(\"TelePeriod\");\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 900,
+        "wires": [
+            [
+                "56678d1d065ee01c"
+            ]
+        ]
+    },
+    {
+        "id": "56678d1d065ee01c",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SendCMND",
+        "mode": "link",
+        "links": [
+            "12d2e216025bf707"
+        ],
+        "x": 730,
+        "y": 900,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "d95edd29b2f37bb8",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SetTemp",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\n\nnsPanel.homeScreen.setTemperature(msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 960,
+        "wires": [
+            [
+                "ee34f725eacfcbd3"
+            ]
+        ]
+    },
+    {
+        "id": "581e49874bd46cb0",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "OnRESULT",
+        "links": [
+            "5e4ac481f20fc71e"
+        ],
+        "x": 110,
+        "y": 1580,
+        "wires": [
+            [
+                "bb03fcc0f1da11f7"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "bb03fcc0f1da11f7",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "Process",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst msgPanel = msg.payload.NSPanel;\n\nif(msgPanel==undefined || msgPanel.id==undefined)\n    return null;\n\nconst widget = nsPanel.widgets.find(msgPanel.id);\n\nif(widget==undefined)\n    return null;\n\nif(widget.ctype==\"scene\")\n{\n    msg= {\"widget\":widget};\n    return([msg,null]);\n}\nelse\n{\n    msg= {\"widget\":widget,\"params\":msgPanel.params};\n    return([null,msg]);\n}",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 1580,
+        "wires": [
+            [
+                "ce0d5e0707fecd3c"
+            ],
+            [
+                "7e93109cf311be20"
+            ]
+        ],
+        "outputLabels": [
+            "Scene",
+            "Device / Group"
+        ]
+    },
+    {
+        "id": "8d2f93da0a31839a",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "switches",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\n\nvar widget = msg.widget;\nvar switches = msg.params.switches;\n\nfor(let i=0;i<switches.length;i++)\n{\n    var ns_state = switches[i].switch;\n    widget.entities[i].stateOnOff = ns_state;\n}\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "9e891e6cf8edef3d",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "69ee905a5ef5b9f9",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 90,
+        "y": 560,
+        "wires": [
+            [
+                "42a0c56a0a8c7852"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "42a0c56a0a8c7852",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "69ee905a5ef5b9f9",
+        "name": "NSPanel engine",
+        "func": "class sendto {\n    static #nsTopics = flow.get(\"nsTopics\");\n\n    static #sendTo(output, message) {\n        const messages = new Array(node.outputCount).fill(null);\n        messages[output] = message;\n        node.send(messages);\n    }\n\n    static tasmota(command, params = undefined) {\n        const msg = sendto.#nsTopics.buildCmndMsg(command, params);\n        this.#sendTo(0, msg);\n    }\n\n    static nspanel(payload) {\n        const msg = sendto.#nsTopics.buildCmndMsg(\"NSPSend\", payload);\n        this.#sendTo(0, msg);\n    }\n\n    static ha(entity, action, data = undefined) {\n        var payload = {};\n        payload.action = action;\n        payload.target = { \"entity_id\": [entity] };\n\n        if (data != undefined) {\n            payload.data = data;\n        }\n        this.#sendTo(1, { \"payload\": payload });\n    }\n\n    static flow(msg, asPayload = true) {\n        if (asPayload) {\n            this.#sendTo(2, { \"payload\": msg });\n        }\n        else {\n            this.#sendTo(2, msg);\n        }\n    }\n}\n\nclass nsHomeScreen {\n    setTemperature(value) {\n        sendto.nspanel({ \"temperature\": helpers.calcTemp(value), \"tempUnit\": helpers.tempUnit });\n    }\n\n    setHumidity(value) {\n        value = isFinite(value) ? Math.round(value) : 0;\n        sendto.nspanel({ \"humidity\": value, \"tempUnit\": helpers.tempUnit });\n    }\n\n    setDateTime(value = undefined) {\n        var dt = value == undefined ? new Date() : value;\n        sendto.nspanel({\n            \"year\": dt.getFullYear(),\n            \"mon\": dt.getMonth(),\n            \"day\": dt.getDate(),\n            \"hour\": dt.getHours(),\n            \"min\": dt.getMinutes(),\n            \"week\": dt.getDay()\n        });\n    }\n\n    setWeather(condition, temp, tempMin, tempMax) {\n        sendto.nspanel({ \"HMI_weather\": condition, \"HMI_outdoorTemp\": { \"current\": temp, \"range\": `${tempMin},${tempMax}` } });\n    }\n}\n\nclass haEntity {\n    id\n\n    constructor(id) {\n        this.id = id;\n    }\n\n    get state() {\n        const states = global.get(\"homeassistant\").homeAssistant.states;\n        return states[this.id].state;\n    }\n\n    get attributes() {\n        const states = global.get(\"homeassistant\").homeAssistant.states;\n        return states[this.id].attributes;\n    }\n\n    get stateOnOff() {\n        switch (this.state) {\n            case \"y\":\n            case \"yes\":\n            case \"true\":\n            case \"on\":\n            case \"home\":\n            case \"open\":\n                return \"on\";\n\n            default:\n                return \"off\";\n        }\n    }\n\n    get stateBool() {\n        return this.stateOnOff == \"on\";\n    }\n\n    set stateOnOff(value) {\n        if (this.stateOnOff != value) {\n            switch (value) {\n                case \"on\":\n                    this.performAction(\"turn_on\");\n                    break;\n\n                case \"off\":\n                    this.performAction(\"turn_off\");\n                    break;\n            }\n        }\n    }\n\n    get online() {\n        var cur_state = this.state;\n        return !(cur_state == \"unknown\" || cur_state == \"unavailable\");\n    }\n\n    performAction(action, data = undefined) {\n        var domain = undefined;\n        var dot_indx = this.id.indexOf(\".\");\n        if (dot_indx > 0) {\n            domain = this.id.substring(0, dot_indx)\n        }\n        else {\n            return null;\n        }\n\n        sendto.ha(this.id, `${domain}.${action}`, data);\n    }\n}\n\nclass nsWidget {\n    index; ctype; id; //uiid - optional if ctype!=scene\n    label; entities;\n\n    constructor(cwidget)// widget object from config\n    {\n        this.index = cwidget.index;\n        this.ctype = cwidget.ctype;\n        this.id = cwidget.index.toString();\n        this.label = cwidget.label ?? \" \";\n        var info = this.#getWidgetInfo(cwidget);\n\n        if (info.uiid != undefined) {\n            this.uiid = info.uiid;\n            this.cuiid = cwidget.uiid;\n        }\n\n        this.entities = cwidget.entities.slice(0, info.maxEntities).map((id) => new haEntity(id));\n    }\n\n    #getWidgetInfo(cwidget) {\n        var result = {\n            uiid: undefined,\n            maxEntities: 1\n        }\n\n        if (cwidget.ctype == \"scene\") {\n            return result; //uiid:undefined, maxEntities:1\n        }\n\n        cwidget.entities.slice(0, 4); //max 4 entities\n        var entitiesCount = cwidget.entities.length;\n\n        switch (cwidget.uiid) {\n            case \"hswitch\":\n                result.uiid = entitiesCount;\n                result.maxEntities = 4;\n                break;\n\n            case \"vswitch\":\n                result.uiid = entitiesCount + 5;\n                result.maxEntities = 4;\n                break;\n\n            case \"curtain\":\n                result.uiid = 11;\n                result.maxEntities = 10;\n                break;\n\n            case \"rgblight\":\n                result.uiid = 33;\n                result.maxEntities = 10;\n                break;\n\n            case \"dimmablelight\":\n                result.uiid = 44;\n                result.maxEntities = 10;\n                break;\n\n            case \"cctlight\":\n                result.uiid = 52;\n                result.maxEntities = 10;\n                break;\n\n            case \"rgbcctlight\":\n                result.uiid = 69;\n                result.maxEntities = 10;\n                break;\n\n            case \"acc\":\n                result.uiid = 151;\n                result.maxEntities = 10;\n                break;\n\n            default:\n                return undefined;\n\n        }\n\n        return result;\n    }\n\n    toHmiResources() {\n        var result = {\n            \"HMI_resources\": [{\n                \"index\": this.index,\n                \"ctype\": this.ctype,\n                \"id\": this.id\n            }]\n        };\n\n        if (this.uiid != undefined) result.HMI_resources[0].uiid = this.uiid;\n        return result;\n    }\n\n    toRelation(params = undefined) {\n        var relation = {\n            //\"ctype\": this.ctype, //<= not required\n            \"id\": this.id,\n            \"name\": this.label\n        };\n\n        if (this.ctype == \"device\") {\n            relation.online = this.entities.every((entity) => entity.online);\n        }\n\n        if (params != undefined) {\n            relation.params = params;\n        }\n        return { \"relation\": [relation] };\n    }\n\n    update(params = undefined) {\n        sendto.nspanel(this.toRelation(params));\n    }\n\n    static toDelete(indx) {\n        return { \"index\": indx, \"type\": \"delete\" }\n    }\n}\n\nclass nsWidgets {\n    #widgets = [];\n\n    add(cwidget) {\n        var widget = this.find(cwidget.index);\n\n        //If widget not found\n        if (widget == undefined) {\n            widget = new nsWidget(cwidget);\n            this.#widgets.push(widget);\n        }\n\n        //Update screen\n        sendto.nspanel(widget.toHmiResources());\n        return widget;\n    }\n\n    remove(indx) {\n        this.#widgets = this.#widgets.filter((widget) => widget.index != indx);\n        sendto.nspanel(nsWidget.toDelete(indx));\n    }\n\n    clear() {\n        for (let indx = 1; indx <= 8; indx++) {\n            this.remove(indx);\n        }\n    }\n\n    find(id) {\n        return this.#widgets.find((widget) => widget.id == id);\n    }\n\n    filterByEntityId(id) {\n        return this.#widgets.filter((widget) => widget.entities.some((entity) => entity.id == id));\n    }\n\n    getAll() {\n        return this.#widgets;\n    }\n}\n\nclass nsThermostat {\n    //------Consts\n    #config = env.get(\"config\");\n    #storeId = \"nsThermostat\";\n    #id = \"atc\"; // thermostat id used in messages\n    #options = [// array of options for thermostat screen\n        { name: \"ATCMode\", get: () => this.#panelState.mode },\n        { name: \"ATCEnable\", get: () => this.#panelState.enabled },\n        { name: \"ATCExpect0\", get: () => helpers.calcTemp(this.#panelState.manualTemp) },\n        { name: \"ATCExpect1\", get: () => helpers.calcTemp(this.#panelState.autoTemp) }\n    ];\n\n    //------From env.config\n    #enabled = false; // true if thermostat enabled in config\n    #type;//hot or cold\n    #hysteresis;// temp offset for enable heating/cooling\n    #entities;// entities to control with thermostat\n\n    //------Internal use variables\n    #roomTemp; // current room temperature\n    #state; // iddle/heating/cooling\n\n    #panelState =\n        {\n            mode: 1, //0 manual, 1 auto\n            enabled: 1, //0 off, 1 on\n            manualTemp: 20, //0 temperature for manual mode\n            autoTemp: 20 //1 temperature for auto mode\n        }\n\n    constructor() {\n        this.#enabled = this.#config.thermostat != undefined;\n\n        if (this.#enabled) {\n            const cthermostat = this.#config.thermostat;\n            this.#type = cthermostat.type == \"cold\" ? \"cold\" : \"hot\";\n            this.#hysteresis = (cthermostat.hysteresis > 0 && cthermostat.hysteresis <= 5) ? cthermostat.hysteresis : 1;\n            if (this.#config.thermostat.entities != undefined) {\n                this.#entities = this.#config.thermostat.entities.map((id) => new haEntity(id));\n            }\n            //Load state\n            const panelState = flow.get(this.#storeId);\n            if (panelState != undefined) {\n                this.#panelState = panelState;\n            }\n        }\n        else {\n            //Clear settings\n            flow.set(this.#storeId, undefined);\n        }\n    }\n\n    //Send value of specified option (string) to screen\n    //If option parameter is undefined send all options\n    #sendOption(option) {\n        var options = option == undefined ? this.#options : this.#options.filter((m) => m.name == option);\n\n        options.forEach((m) => {\n            var msg = {};\n            msg[m.name] = m.get();\n            sendto.nspanel(msg);\n        });\n    }\n\n    #updateSwitch() {\n        sendto.nspanel({ \"relation\": { \"id\": this.#id, \"params\": { \"switch\": this.stateOnOff } } });\n    }\n\n    #updateEntities() {\n        if (this.#entities != undefined) {\n            this.#entities.forEach((entity) => entity.stateOnOff = this.stateOnOff);\n        }\n    }\n\n    #updateState() {\n        var state = this.#state ?? \"iddle\";\n\n        //If thermostat enabled and all temps is valid\n        if (this.#panelState.enabled == 1 &&\n            this.#roomTemp != undefined) {\n            //temp set in thermostat\n            const setTemp = this.#panelState.mode == 0 ? this.#panelState.manualTemp : this.#panelState.autoTemp;\n\n            //low hysteresis point reach\n            const tooCold = this.#roomTemp <= (setTemp - this.#hysteresis);\n\n            //high hysteresis point reach\n            const tooHot = this.#roomTemp >= (setTemp + this.#hysteresis);\n\n            //true if heating or cooling\n            var working = state != \"iddle\";\n\n            //hot mode\n            if (this.#type == \"hot\") {\n                if (tooHot && working) working = false;\n                if (tooCold && !working) working = true;\n            }\n            //cold\n            else {\n                if (tooCold && working) working = false;\n                if (tooHot && !working) working = true;\n            }\n            state = working ? (this.type == \"hot\" ? \"heating\" : \"cooling\") : \"iddle\";\n        }\n        else //If thermostat disabled or invalid temps.\n        {\n            state = \"iddle\";\n        }\n\n        if (state != this.#state) {\n            this.#state = state;\n            this.#updateSwitch();\n            this.#updateEntities();\n            sendto.flow(`ATC.${state.charAt(0).toUpperCase() + state.slice(1)}`);\n        }\n    }\n\n    saveState() {\n        if (this.#enabled) {\n            flow.set(this.#storeId, this.#panelState);\n        }\n    }\n\n    updateScreen() {\n        if (this.#enabled) {\n            //Enable thermostat screen\n            sendto.nspanel({ \"HMI_ATCDevice\": { \"ctype\": \"device\", \"id\": this.#id, \"etype\": this.#type } });\n            this.#sendOption();\n            this.#updateSwitch();\n        }\n        else {\n            //Disable thermostat screen\n            sendto.nspanel({ \"HMI_ATCDevice\": {} });\n        }\n    }\n\n    //Setters--------------------\n\n    set roomTemp(value) {\n        if (this.#enabled && value != this.#roomTemp) {\n            this.#roomTemp = isFinite(value) ? +(+value).toFixed(2) : undefined;\n            this.#updateState();\n        }\n    }\n\n    set manualTemp(value) {\n        value = helpers.trimRange(value, 4, 35); //trim to min-max thermostat range\n        if (this.#enabled && value != undefined && value != this.#panelState.manualTemp) {\n            this.#panelState.manualTemp = +value.toFixed(2);\n            this.#sendOption(\"ATCExpect0\");\n            this.#updateState();\n        }\n    }\n\n    set autoTemp(value) {\n        value = helpers.trimRange(value, 4, 35);//trim to min-max thermostat range\n        if (this.#enabled && value != undefined && value != this.#panelState.autoTemp) {\n            this.#panelState.autoTemp = +value.toFixed(2);\n            this.#sendOption(\"ATCExpect1\");\n            this.#updateState();\n        }\n    }\n\n    set mode(value) {\n        value = value == 0 ? 0 : 1; // 0 manual 1 auto\n        if (this.#enabled && value != this.#panelState.mode) {\n            this.#panelState.mode = value;\n            this.#sendOption(\"ATCMode\");\n            this.#updateState();\n        }\n    }\n\n    set enabled(value) {\n        value = value == 1 ? 1 : 0; //1 enabled 0 disabled\n        if (this.#enabled && value != this.#panelState.enabled) {\n            this.#panelState.enabled = value;\n            this.#sendOption(\"ATCEnable\");\n            this.#updateState();\n        }\n    }\n\n    //Getters--------------------\n\n    get type() {\n        return this.#type;\n    }\n\n    get hysteresis() {\n        return this.#hysteresis;\n    }\n\n    get roomTemp() {\n        return this.#roomTemp;\n    }\n\n    get state() {\n        return this.#state;\n    }\n\n    get stateOnOff() {\n        if (this.#enabled) {\n            return (this.#state == \"heating\" || this.#state == \"cooling\") ? \"on\" : \"off\";\n        }\n        else {\n            return undefined;\n        }\n    }\n\n    get mode() {\n        return this.#enabled ? this.#panelState.mode : undefined;\n    }\n\n    get enabled() {\n        return this.#enabled ? this.#panelState.enabled : undefined;\n    }\n\n    get manualTemp() {\n        return this.#enabled ? this.#panelState.manualTemp : undefined;\n    }\n\n    get autoTemp() {\n        return this.#enabled ? this.#panelState.autoTemp : undefined;\n    }\n}\n\n\nclass nsBuzzer {\n    #interval;\n\n    #playSound(sound) {\n        switch (sound) {\n            case \"info\":\n                sendto.tasmota(\"Buzzer\", \"1,1,1\");\n                break;\n\n            case \"confirm\":\n                sendto.tasmota(\"Buzzer\", \"2,1,1\");\n                break;\n\n            case \"error\":\n                sendto.tasmota(\"Buzzer\", \"2,5,2\");\n                break;\n\n            case \"alarm\":\n                sendto.tasmota(\"Buzzer\", \"5,2,1\");\n                break;\n        }\n    }\n\n    playLoop(sound) {\n        this.stopLoop();\n        this.#playSound(sound);\n        this.#interval = setInterval(this.#playSound, 3000, sound);\n    }\n\n    stopLoop() {\n        if (this.#interval != undefined) {\n            clearInterval(this.#interval);\n            this.#interval = undefined;\n        }\n    }\n\n    get playingLoop() {\n        return this.#interval != undefined;\n    }\n\n    //Info short sound\n    info() {\n        this.#playSound(\"info\");\n    }\n\n    //Confirm two short beeps\n    confirm() {\n        this.#playSound(\"confirm\");\n    }\n\n    //Error two long beeps\n    error() {\n        this.#playSound(\"error\");\n    }\n\n    //Alarm five beeps\n    alarm() {\n        this.#playSound(\"alarm\");\n    }\n}\n\nclass nsPanel {\n    #homeScreen = new nsHomeScreen();\n    #widgets = new nsWidgets();\n    #thermostat = new nsThermostat();\n    #buzzer = new nsBuzzer();\n\n    get homeScreen() {\n        return this.#homeScreen;\n    }\n\n    get widgets() {\n        return this.#widgets;\n    }\n\n    get thermostat() {\n        return this.#thermostat;\n    }\n\n    get buzzer() {\n        return this.#buzzer;\n    }\n\n    //Query screen version\n    queryVersion() {\n        sendto.nspanel({ \"queryInfo\": \"version\" });\n    }\n\n    //Enter factory test mode\n    enterTestMode() {\n        sendto.nspanel({ \"queryInfo\": \"factory\" });\n    }\n\n    //Query screen orientation\n    queryScreenOrientation() {\n        sendto.nspanel({ \"queryInfo\": \"direction\" });\n    }\n\n    //Set Energy-saving mode\n    //0 = screen always on\n    //1 = screen off\n    setEcoMode(mode) {\n        if (mode == 0 || mode == 1) {\n            sendto.nspanel({ \"HMI_dimOpen\": +mode });\n        }\n    }\n\n    //Set main screen Background/Wallpaper\n    //0 = bedroom\n    //1 = livingroom\n    //2 = black (FW 1.5+)\n    setWallpaper(value) {\n        if (value == 0 || value == 1 || value == 2) {\n            sendto.nspanel({ \"HMI_wallpaper\": +value });\n        }\n    }\n\n    //Restart nsPanel\n    restart() {\n        sendto.tasmota(\"Restart\", \"1\");\n    }\n}\n\n//-------------------------------------------------------------------\n\nclass nsHelpers {\n    #config = env.get(\"config\");\n    //Temperature unit 0=C, 1=F\n    #temp_unit;\n\n    constructor() {\n        //Set temp unit from config\n        this.#temp_unit = this.#config.temperature_unit == \"F\" ? 1 : 0;\n    }\n\n    get tempUnit() {\n        return this.#temp_unit;\n    }\n\n    remap(value, fromMin, fromMax, toMin, toMax) {\n        value = +value;\n        return Math.round(\n            (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin);\n    }\n\n    invertValueInRange(value, min, max) {\n        value = +value;\n        return max + min - value;\n    }\n\n    trimRange(value, min, max) {\n        if (isFinite(value)) {\n            value = +value;\n            if (value < min) return +min;\n            if (value > max) return +max;\n            return value;\n        }\n        return undefined;\n    }\n\n    get #tempCalibration() {\n        var calibration = this.#config.temperature_calibration;\n        return calibration == undefined ? 0 : calibration;\n    }\n\n    get #tempMultipler() {\n        var multipler = this.#config.temperature_multipler;\n        return (multipler == undefined || multipler <= 0) ? 1 : multipler;\n    }\n\n    calcTemp(value, defaultValue = 0) {\n        if (isFinite(value)) {\n            value = +value;\n            value = (value + this.#tempCalibration) * this.#tempMultipler;\n            return +(Math.round(value).toFixed(2));\n        }\n        return defaultValue;\n    }\n\n    divideTemp(value) {\n        if (isFinite(value)) {\n            //+ for convert to number\n            return +(value / this.#tempMultipler).toFixed(2);\n        }\n        return undefined;\n    }\n}\n\nconst helpers = new nsHelpers();\nflow.set(\"helpers\", helpers);\n\nconst panel = new nsPanel();\nflow.set(\"nsPanel\", panel);\n\nreturn null;",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 560,
+        "wires": [
+            [
+                "4e16bb111b63e3a5"
+            ],
+            [
+                "902908f44a4f0398"
+            ],
+            [
+                "3a3564506f6149e9"
+            ]
+        ],
+        "outputLabels": [
+            "NSPSend",
+            "HAAction",
+            "SendResult"
+        ]
+    },
+    {
+        "id": "902908f44a4f0398",
+        "type": "api-call-service",
+        "z": "9f35391991156165",
+        "g": "69ee905a5ef5b9f9",
+        "name": "HAAction",
+        "server": "${ha_server}",
+        "version": 7,
+        "debugenabled": false,
+        "action": "",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "labelId": [],
+        "data": "",
+        "dataType": "jsonata",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "",
+        "service": "",
+        "x": 740,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80c9147698e530bc",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": ">>",
+        "func": "//Only for good flow looking :)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "3a57b51c2a595730"
+            ]
+        ]
+    },
+    {
+        "id": "bb41aaec7d4c76e1",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "scene",
+        "func": "msg.widget.update();\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "ce0d5e0707fecd3c",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "scene",
+        "func": "const widget = msg.widget;\n\nif(widget.entities.length>0)\n{\n    widget.entities[0].performAction(\"turn_on\");\n}\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "39ed3b7072df4dc0",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SetEcoMode",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst config = env.get(\"config\");\nnsPanel.setEcoMode(config.eco_mode==1?1:0);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "c2774455db3acd5f",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 1780,
+        "wires": [
+            [
+                "04ba2beadc1cfcd9"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "04ba2beadc1cfcd9",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "InitializeThermostat",
+        "func": "//See On Stop tab >>>>>>>>>>>>>>>>>>>>>>>>>>>>> here ^^\nconst nsPanel = flow.get(\"nsPanel\");\nnsPanel.thermostat.updateScreen();\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\n\n//Save current thermostat state when re-deploy\nflow.get(\"nsPanel\").thermostat.saveState();\n\nreturn null;",
+        "libs": [],
+        "x": 710,
+        "y": 1780,
+        "wires": []
+    },
+    {
+        "id": "cdec327aeb5a1a0a",
+        "type": "server-state-changed",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "change",
+        "server": "${ha_server}",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [],
+            "substring": [],
+            "regex": [
+                ".*"
+            ]
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "entity",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "28bbf25b9e41f399"
+            ]
+        ]
+    },
+    {
+        "id": "416ba7313f08405b",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnEntityChange",
+        "mode": "link",
+        "links": [
+            "e611acbec1f874d5",
+            "eb61a580774179a6"
+        ],
+        "x": 710,
+        "y": 420,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "05e199585ee9a632",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "95a033c29141f87a"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "95a033c29141f87a",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Temp internal?",
+        "func": "const config = env.get(\"config\");\nconst nsTopics = flow.get(\"nsTopics\");\n\nif(config.temperature==\"internal\")\n{\n    return nsTopics.buildSubscribeMsg(nsTopics.SENSOR);\n}\n    \nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "89cab43f83df1dea"
+            ]
+        ]
+    },
+    {
+        "id": "89cab43f83df1dea",
+        "type": "mqtt in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "SENSOR",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "${mqtt_broker}",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 560,
+        "y": 300,
+        "wires": [
+            [
+                "87aa2eac97992ac9"
+            ]
+        ]
+    },
+    {
+        "id": "87aa2eac97992ac9",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnSENSOR",
+        "mode": "link",
+        "links": [
+            "bf46eda51db2de7c"
+        ],
+        "x": 730,
+        "y": 300,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "e611acbec1f874d5",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "OnEntityChange",
+        "links": [
+            "416ba7313f08405b"
+        ],
+        "x": 120,
+        "y": 1360,
+        "wires": [
+            [
+                "f0ec80ef3a3dc328"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "981a7ad58d81bd5e",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateHumidity",
+        "links": [
+            "a9e5c7cb0f41d9f5",
+            "4cc1f8773406283a"
+        ],
+        "x": 120,
+        "y": 1020,
+        "wires": [
+            [
+                "6f3c0e6c1e3eb00d"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "6f3c0e6c1e3eb00d",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "SetHumidity",
+        "func": "const config = env.get(\"config\");\n\nif(config.humidity==undefined)\n    return null;\n\nconst nsPanel = flow.get(\"nsPanel\");\nconst states = global.get(\"homeassistant\").homeAssistant.states;\nconst humidity = states[config.humidity].state;\nnsPanel.homeScreen.setHumidity(humidity);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "a9e5c7cb0f41d9f5",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateHumidity",
+        "mode": "link",
+        "links": [
+            "981a7ad58d81bd5e"
+        ],
+        "x": 720,
+        "y": 820,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "eb61a580774179a6",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "OnEntityChange",
+        "links": [
+            "416ba7313f08405b"
+        ],
+        "x": 120,
+        "y": 1080,
+        "wires": [
+            [
+                "9d249c0c43c85023"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "9d249c0c43c85023",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "Temp or Humi ?",
+        "func": "const config = env.get(\"config\");\n\nif(msg.entity == config.temperature)\n{\n    return [msg,null];\n}\n\nif(msg.entity==config.humidity)\n{\n    return [null,msg];\n}\n\nreturn null;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 1080,
+        "wires": [
+            [
+                "3c71950ea30966bc"
+            ],
+            [
+                "4cc1f8773406283a"
+            ]
+        ],
+        "outputLabels": [
+            "Temperature",
+            "Humidity"
+        ]
+    },
+    {
+        "id": "3c71950ea30966bc",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateTemp",
+        "mode": "link",
+        "links": [
+            "10fbb441b875b4aa"
+        ],
+        "x": 730,
+        "y": 1060,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "4cc1f8773406283a",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "UpdateHumidity",
+        "mode": "link",
+        "links": [
+            "981a7ad58d81bd5e"
+        ],
+        "x": 720,
+        "y": 1100,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "28bbf25b9e41f399",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Find widgets",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\n\nconst widgets = nsPanel.widgets.filterByEntityId(msg.entity);\nmsg.widgets = widgets;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "416ba7313f08405b"
+            ]
+        ]
+    },
+    {
+        "id": "febf12908f01ac31",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "acc",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\n\n//code here\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1680,
+        "wires": []
+    },
+    {
+        "id": "2b37f5e6b2e46ccf",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "curtain",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\nconst params = msg.params;\n\nvar widget = msg.widget;\nvar action=undefined;\nvar data=undefined;\n\nswitch(params.switch)\n{\n    case \"on\":\n        action=\"open_cover\";\n        break;\n\n    case \"pause\":\n        action = \"stop_cover\";\n        break;\n\n    case \"off\":\n        action = \"close_cover\";\n        break;\n}\n\nif(params.setclose!=undefined)\n{\n    action=\"set_cover_position\";\n    data={};\n    var pos = helpers.trimRange(params.setclose,0,100);\n    pos = helpers.invertValueInRange(pos,0,100);\n    data.position=pos;\n}\n\nif(action!=undefined)\n{\n    widget.entities.forEach((entity)=>entity.performAction(action,data));\n}\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "01833fad2c19b2e2",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Debug?",
+        "func": "const config = env.get(\"config\");\nif(config.debug==true)\n{\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "97000ce7dfad5015"
+            ]
+        ]
+    },
+    {
+        "id": "5eaaec141378f30f",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "OnRESULT",
+        "links": [
+            "5e4ac481f20fc71e"
+        ],
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "01833fad2c19b2e2"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "ef95d98895a0988b",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Debug",
+        "links": [],
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "01833fad2c19b2e2"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "e0719eb2843021f9",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 1960,
+        "wires": [
+            [
+                "ffdcb74f97f4a717"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "ffdcb74f97f4a717",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "Query version info",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nnsPanel.queryVersion();\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1960,
+        "wires": []
+    },
+    {
+        "id": "7e93109cf311be20",
+        "type": "switch",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "uiid",
+        "property": "widget.uiid",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "9",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "lte",
+                "v": "69",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "151",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 490,
+        "y": 1620,
+        "wires": [
+            [
+                "8d2f93da0a31839a"
+            ],
+            [
+                "2b37f5e6b2e46ccf"
+            ],
+            [
+                "297cb82b43162ce1"
+            ],
+            []
+        ],
+        "outputLabels": [
+            "<=9 Switches",
+            "==11 Curtain",
+            "<=69 Lights",
+            "==151 Air Conditioner Controller"
+        ]
+    },
+    {
+        "id": "6bdcf8d7050f8eae",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b10a5802f98e7086",
+        "name": "lights",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\n\nvar widget = msg.widget;\n\nvar stateOnOff = widget.entities.every((entity)=>entity.stateBool)?\"on\":\"off\";\nvar params={\"switch\":stateOnOff};\n\nvar attr = widget.entities[0].attributes;\n\nfunction getCt()\n{\n    var result = helpers.remap( attr.color_temp, attr.min_mireds, attr.max_mireds, 0, 255);\n    result = helpers.invertValueInRange(result,0,255);\n    return result;\n}\n\nif(stateOnOff==\"on\")\n{\n    const brightness = helpers.remap(attr.brightness, 0, 255, 0, 100);\n\n    switch(widget.cuiid)\n    {\n        case \"rgblight\":\n            params.colorR=attr.rgb_color[0];\n            params.colorG=attr.rgb_color[1];\n            params.colorB=attr.rgb_color[2];\n            params.bright = brightness;\n        break;\n\n        case \"dimmablelight\":\n            params.brightness = brightness;\n            break;\n\n        case \"cctlight\":\n            //params.ltype=\"white\";\n            params.white={};\n            params.white.br = brightness;\n            params.white.ct = getCt();\n            break;\n\n        case \"rgbcctlight\":\n            if(attr.color_mode == \"color_temp\")\n            {\n                params.ltype=\"white\";\n                params.white={};\n                params.white.br = brightness;\n                params.white.ct = getCt();\n            }\n            else\n            {\n                params.ltype=\"color\";\n                params.color={};\n                params.color.r=attr.rgb_color[0];\n                params.color.g=attr.rgb_color[1];\n                params.color.b=attr.rgb_color[2];\n                params.color.br=brightness;\n            }\n        break;\n    }\n}\n\nwidget.update(params);\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "297cb82b43162ce1",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "8c75219a5ab76f6b",
+        "name": "lights",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\n\nconst widget = msg.widget;\nconst params = msg.params;\nvar stateOnOff = msg.params.switch;\nconst attr = widget.entities[0].attributes;\n\n//Skip this message\n//{\"NSPanel\":{\"id\":\"3\",\"params\":{\"ltype\":\"color\",\"color\":{\"r\":248,\"g\":252,\"b\":248,\"br\":65535}}}}\nif(params.color!=undefined && params.color.br>100)\n{\n    return null;\n}\n\n//On off comand in message\nif(stateOnOff!=undefined)\n{\n    widget.entities.forEach((entity)=>entity.stateOnOff=stateOnOff);\n    return null;\n}\n\nstateOnOff = widget.entities.every((entity) => entity.stateBool) ? \"on\" : \"off\";\n\n//Fix payload--------------------------------------------------------------------\nif(params.white?.ct!=undefined)\n{\n    const min=attr.min_mireds;\n    const max=attr.max_mireds;\n\n    var ct = params.white.ct;\n    ct=helpers.trimRange(ct,0,255);\n    ct = helpers.remap(ct, 0, 255, min, max);\n    ct=helpers.invertValueInRange(ct,min,max);\n    params.white.ct=ct;\n}\n\nif(params.white?.br !=undefined)\n{\n    params.white.br = helpers.trimRange(params.white.br,1,100);\n}\n\nif(params.color!=undefined)\n{\n    params.color.r = helpers.trimRange(params.color.r,1,255);\n    params.color.g = helpers.trimRange(params.color.g,1,255);\n    params.color.b = helpers.trimRange(params.color.b,1,255);\n    params.color.br = helpers.trimRange(params.color.br,1,100);\n}\n\nif(params.colorR!=undefined) params.colorR = helpers.trimRange(params.colorR,1,255);\nif(params.colorG!=undefined) params.colorG = helpers.trimRange(params.colorG,1,255);\nif(params.colorB!=undefined) params.colorB = helpers.trimRange(params.colorB,1,255);\n\nif(params.bright!=undefined) params.bright = helpers.trimRange(params.bright,1,100);\nif(params.brightness!=undefined) params.brightness = helpers.trimRange(params.brightness,1,100);\n\n//End fix ---------------------------------------------------------------------------\n\nif(stateOnOff==\"on\")\n{\n    var data={};\n\n    switch(widget.cuiid)\n    {\n        case \"rgblight\":\n            data.rgb_color = [params.colorR,params.colorG,params.colorB];\n            data.brightness_pct = params.bright;\n            break;\n            \n        case \"dimmablelight\":\n            data.brightness_pct= params.brightness;\n            break;\n\n        case \"cctlight\":\n            data.color_temp= params.white.ct;\n            data.brightness_pct= params.white.br;\n            break;\n\n        case \"rgbcctlight\":\n            if(params.ltype==\"white\")\n            {\n                data.color_temp = params.white.ct;\n                data.brightness_pct = params.white.br;\n            }\n\n            if(params.ltype==\"color\")\n            {\n                data.rgb_color=[params.color.r,params.color.g,params.color.b];\n                data.brightness_pct = params.color.br;\n            }\n            break;\n    }\n    widget.entities.forEach((entity)=>entity.performAction(\"turn_on\",data));\n}\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "9df46d2fd94fcb44",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "SendOutput",
+        "links": [
+            "3a3564506f6149e9",
+            "cdb046f7943f392d",
+            "898aa87ee65ad5c4"
+        ],
+        "x": 110,
+        "y": 2400,
+        "wires": [
+            [
+                "aa91ec6527b9c6bd"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "7b72e6dedc1b8c91",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "OnRESULT",
+        "links": [
+            "5e4ac481f20fc71e"
+        ],
+        "x": 110,
+        "y": 1820,
+        "wires": [
+            [
+                "063a7e1e76a74d07"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "063a7e1e76a74d07",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "SetThermostat",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nconst helpers = flow.get(\"helpers\");\nconst msgPanel = msg.payload.NSPanel;\n\nif (msgPanel == undefined)\n    return null;\n\nvar value;\nif ((value = msgPanel.ATCEnable) != undefined) \n{\n    nsPanel.thermostat.enabled = value;\n}\n\nif((value=msgPanel.ATCMode)!=undefined)\n{\n    nsPanel.thermostat.mode = value;\n}\n\nif ((value = msgPanel.ATCExpect0) != undefined) {\n    nsPanel.thermostat.manualTemp = helpers.divideTemp(value);\n}\n\nif ((value = msgPanel.ATCExpect1) != undefined) {\n    nsPanel.thermostat.autoTemp = helpers.divideTemp(value);\n}\n\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "4e16bb111b63e3a5",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "69ee905a5ef5b9f9",
+        "name": "SendCMND",
+        "mode": "link",
+        "links": [
+            "12d2e216025bf707"
+        ],
+        "x": 730,
+        "y": 520,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "3a3564506f6149e9",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "69ee905a5ef5b9f9",
+        "name": "SendOutput",
+        "mode": "link",
+        "links": [
+            "9df46d2fd94fcb44"
+        ],
+        "x": 730,
+        "y": 600,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "ee34f725eacfcbd3",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "a869d1443e49c3ad",
+        "name": "OnTempChanged",
+        "mode": "link",
+        "links": [
+            "8b66e2f0fd02c9c2"
+        ],
+        "x": 710,
+        "y": 960,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "8b66e2f0fd02c9c2",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "OnTempChanged",
+        "links": [
+            "ee34f725eacfcbd3"
+        ],
+        "x": 130,
+        "y": 1860,
+        "wires": [
+            [
+                "d0fd4e028ac8cce4"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "d0fd4e028ac8cce4",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "58f9bd5224e48627",
+        "name": "UpdateRoomTemp",
+        "func": "const nsPanel = flow.get(\"nsPanel\");\nnsPanel.thermostat.roomTemp = msg.payload;\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "ab5a1731290c6151",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "nsTopics",
+        "func": "class nsTopics\n{\n    #config = env.get(\"config\");\n\n    #base_tele; // NSPanel/tele/\n    #base_cmnd;// NSPanel/cmnd/\n    #result; // NSPanel/tele/RESULT\n    #lwt;// NSPanel/tele/LWT\n    #sensor; // NSPanel/tele/SENSOR\n\n    constructor()\n    {\n        this.#base_tele = this.#config.tele_topic;\n        this.#base_cmnd = this.#config.cmnd_topic;\n\n        this.#result = this.buildTeleTopic(\"RESULT\");\n        this.#lwt = this.buildTeleTopic(\"LWT\");\n        this.#sensor = this.buildTeleTopic(\"SENSOR\");\n    }\n\n    #buildTopic(prefix, sufix)\n    {\n        return path.join(prefix, \"/\", sufix);\n    }\n\n    buildTeleTopic(sufix)\n    {\n        return this.#buildTopic(this.#base_tele, sufix);\n    }\n\n    buildCmndTopic(cmnd)\n    {\n        return this.#buildTopic(this.#base_cmnd, cmnd);\n    }\n\n    buildCmndMsg(cmnd, params = undefined)\n    {\n        params = params == undefined ? \"\" : params;//If params undefined send empty message\n        cmnd = this.buildCmndTopic(cmnd);\n        return { \"cmnd\": cmnd, \"payload\": params };\n    }\n\n    buildSubscribeMsg(topic)\n    {\n        return { \"action\": \"subscribe\", \"topic\": topic };\n    }\n\n    //Getters ------------------------------------\n\n    get baseTele()\n    {\n        return this.#base_tele;\n    }\n\n    get baseCmnd()\n    {\n        return this.#base_cmnd;\n    }\n\n    get RESULT()\n    {\n        return this.#result;\n    }\n\n    get LWT()\n    {\n        return this.#lwt;\n    }\n\n    get SENSOR()\n    {\n        return this.#sensor;\n    }\n}\n\nconst nstopics = new nsTopics();\nflow.set(\"nsTopics\", nstopics);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "path",
+                "module": "path"
+            }
+        ],
+        "x": 560,
+        "y": 60,
+        "wires": [
+            [
+                "11b681b1dbcd85bf"
+            ]
+        ]
+    },
+    {
+        "id": "9e0ac6c4825e3c7f",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b1c20e04a5b5db07",
+        "name": "Validate Config",
+        "func": "const config = env.get(\"config\");\nconst states = global.get(\"homeassistant\").homeAssistant.states;\n\nfunction entityFound(entity)\n{\n    return states[entity] != undefined;\n}\n\nclass nsValidator\n{\n    #path;\n    #condition;\n    #errorMsg;\n\n    constructor(path, condition, errorMsg)\n    {\n        this.#path = path;\n        this.#condition = condition;\n        this.#errorMsg = errorMsg;\n    }\n\n    validate()\n    {\n        //True if OK\n        const result = this.#condition();\n        if (!result) node.error(`Error => config.${this.#path} ${this.#errorMsg}`);\n        return result;\n    }\n}\n\nconst tests = [];\n\n//Topics\ntests.push(new nsValidator(\"tele_topic\", () => config.tele_topic != undefined, \"undefined\"));\ntests.push(new nsValidator(\"cmnd_topic\", () => config.cmnd_topic != undefined, \"undefined\"));\n\n//Weather\ntests.push(new nsValidator(\"weather\", () => config.weather != undefined, \"undefined\"));\nif (config.weather != undefined)\n{\n    tests.push(new nsValidator(\"weather\", () => entityFound(config.weather), `entity \"${config.weather}\" not found`));\n}\n\n//Temperature\ntests.push(new nsValidator(\"temperature\", () => config.temperature != undefined, \"undefined\"));\nif (config.temperature != undefined && config.temperature != \"internal\")\n{\n    tests.push(new nsValidator(\"temperature\", () => entityFound(config.temperature), `entity \"${config.temperature}\" not found`));\n}\n\n//Humidity (optional)\nif (config.humidity != undefined)\n{\n    tests.push(new nsValidator(\"humidity\", () => entityFound(config.humidity), `entity \"${config.humidity}\" not found`));\n}\n\n//Thermostat\nif (config.thermostat != undefined)\n{\n    const thermostat = config.thermostat;\n\n    if (thermostat.entities != undefined)\n    {\n        for (let indx = 0; indx < thermostat.entities.length; indx++)\n        {\n            const entity = thermostat.entities[indx];\n            const path = `thermostat.entities[\"${entity}\"]`;\n            tests.push(new nsValidator(path, () => entityFound(entity), \"entity not found\"));\n        }\n    }\n}\n\n//Widgets\nif (config.widgets != undefined)\n{\n    for (let indx = 0; indx < config.widgets.length; indx++)\n    {\n        const path = `widgets[${indx}].`;\n        const cwidget = config.widgets[indx];\n        const validCtypes = [\"device\", \"group\", \"scene\"];\n        const validUiids = [\"hswitch\", \"vswitch\", \"curtain\", \"rgblight\", \"dimmablelight\", \"cctlight\", \"rgbcctlight\", \"acc\"];\n\n        tests.push(new nsValidator(path + \"ctype\", () => validCtypes.find((ct) => ct == cwidget.ctype) != undefined, `invalid value -> ${cwidget.ctype}`));\n        tests.push(new nsValidator(path + \"uiid\", () => cwidget.ctype == \"scene\" || validUiids.find((ui) => ui == cwidget.uiid) != undefined, `invalid value -> ${cwidget.uiid}`));\n        tests.push(new nsValidator(path + \"entities\", () => cwidget.entities != undefined, \"undefined\"));\n        if (cwidget.entities != undefined)\n        {\n            for (let eindx = 0; eindx < cwidget.entities.length; eindx++)\n            {\n                const entity = cwidget.entities[eindx];\n                const epath = path + `entities[\"${entity}\"]`;\n                tests.push(new nsValidator(epath, () => entityFound(entity), \"entity not found\"));\n            }\n        }\n    }\n}\n\nvar isValid = true;\n\ntests.forEach((t) => isValid = isValid && t.validate());\n\nreturn isValid ? msg : null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "ab5a1731290c6151"
+            ]
+        ]
+    },
+    {
+        "id": "88744b7dde4d2630",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b49ddf06c02d88a3",
+        "name": "nsCommands",
+        "func": "class nsCommand\n{\n    #name; // String command name eg. NSPanel.\n    #func; // command logic function\n    #description; // Command description for help\n\n    constructor(name, func, description)\n    {\n        this.#name = name;\n        this.#func = func;\n        this.#description = description;\n    }\n\n    get name()\n    {\n        return this.#name;\n    }\n\n    execute(arg)\n    {\n        return this.#func(arg);\n    }\n\n    get description()\n    {\n        return this.#description;\n    }\n}\n\nclass nsCommands\n{\n    #nsPanel = flow.get(\"nsPanel\");\n    #commands = []; // [nsCommand]\n\n    constructor()\n    {\n        //NSPanel--------------------------------------\n\n        this.#commands.push(new nsCommand(\"Restart\", () =>\n        {\n            this.#nsPanel.restart();\n            return \"OK\";\n        },\n            \"Restart nsPanel.\"));\n\n        this.#commands.push(new nsCommand(\"EnterTestMode\", () => \n        {\n            this.#nsPanel.enterTestMode();\n            return \"OK\";\n        },\n            \"Enter screen factory test mode. To leave this mode restart nsPanel.\"));\n\n        this.#commands.push(new nsCommand(\"SetWallpaper\", (arg) => \n        {\n            this.#nsPanel.setWallpaper(arg);\n            return \"OK\";\n        },\n            \"Set home screen wallpaper (0-bedroom, 1-livingroom, 2-black for fw 1.5+).\"));\n\n        //Thermostat----------------------------------\n\n        this.#commands.push(new nsCommand(\"ATC.SetManualTemp\", (arg) => \n        {\n            this.#nsPanel.thermostat.manualTemp = arg;\n            return this.#nsPanel.thermostat.manualTemp;\n        },\n            \"Set thermostat target temperature for manual mode.\"));\n\n        this.#commands.push(new nsCommand(\"ATC.SetAutoTemp\", (arg) => \n        {\n            this.#nsPanel.thermostat.autoTemp = arg;\n            return this.#nsPanel.thermostat.autoTemp;\n        },\n            \"Set thermostat target temperature for auto mode.\"));\n\n        this.#commands.push(new nsCommand(\"ATC.SetMode\", (arg) => \n        {\n            this.#nsPanel.thermostat.mode = arg;\n            return this.#nsPanel.thermostat.mode;\n        },\n            \"Set thermostat mode (0-manual, 1-auto).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.SetEnabled\", (arg) => \n        {\n            this.#nsPanel.thermostat.enabled = arg;\n            return this.#nsPanel.thermostat.enabled;\n        },\n            \"Set thermostat enabled state (0-disabled, 1-enabled).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetType\", () => \n        {\n            return this.#nsPanel.thermostat.type;\n        },\n            \"Get thermostat type (hot or cold).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetHysteresis\", () =>\n        {\n            return this.#nsPanel.thermostat.hysteresis;\n        },\n            \"Get thermostat hysteresis.\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetRoomTemp\", () => \n        {\n            return this.#nsPanel.thermostat.roomTemp;\n        },\n            \"Get current room temperature stored in thermostat.\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetState\", () => \n        {\n            return this.#nsPanel.thermostat.state;\n        },\n            \"Get thermostat state (heating, cooling, iddle).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetStateOnOff\", () => \n        {\n            return this.#nsPanel.thermostat.stateOnOff;\n        },\n            \"Get thermostat state (on or off).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetMode\", () => \n        {\n            return this.#nsPanel.thermostat.mode;\n        },\n            \"Get thermostat mode (0-manual, 1-auto).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetEnabled\", () => \n        {\n            return this.#nsPanel.thermostat.enabled;\n        },\n            \"Get thermostat enabled state (0-disabled, 1-enabled).\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetManualTemp\", () => \n        {\n            return this.#nsPanel.thermostat.manualTemp;\n        },\n            \"Get thermostat target temperature for manual mode.\"));\n\n        this.#commands.push(new nsCommand(\"ATC.GetAutoTemp\", () => \n        {\n            return this.#nsPanel.thermostat.autoTemp;\n        },\n            \"Get thermostat target temperature for auto mode.\"));\n\n        //Buzzer-------------------------------------------\n\n        this.#commands.push(new nsCommand(\"Buzzer.PlayLoop\", (arg) =>\n        {\n            this.#nsPanel.buzzer.playLoop(arg);\n            return \"OK\";\n        },\n            \"Plays a sound in loop until StopLoop is called.\"));\n\n        this.#commands.push(new nsCommand(\"Buzzer.StopLoop\", () =>\n        {\n            this.#nsPanel.buzzer.stopLoop();\n            return \"OK\";\n        },\n            \"Stop playing sound in loop.\"));\n\n        this.#commands.push(new nsCommand(\"Buzzer.PlayingLoop\", () =>\n        {\n            return this.#nsPanel.buzzer.playingLoop;\n        },\n            \"Return true if buzzer playing sound in loop, otherwise return false.\"))\n\n        this.#commands.push(new nsCommand(\"Buzzer.Info\", () => \n        {\n            this.#nsPanel.buzzer.info();\n            return \"OK\";\n        },\n            \"Play single info sound from internal buzzer.\"));\n\n        this.#commands.push(new nsCommand(\"Buzzer.Confirm\", () => \n        {\n            this.#nsPanel.buzzer.confirm();\n            return \"OK\";\n        },\n            \"Play single confirm sound from internal buzzer.\"));\n\n        this.#commands.push(new nsCommand(\"Buzzer.Error\", () => \n        {\n            this.#nsPanel.buzzer.error();\n            return \"OK\";\n        },\n            \"Play single error sound from internal buzzer.\"));\n\n        this.#commands.push(new nsCommand(\"Buzzer.Alarm\", () => \n        {\n            this.#nsPanel.buzzer.alarm();\n            return \"OK\";\n        },\n            \"Play single alarm sound from internal buzzer.\"));\n    }\n\n    #getHelp()\n    {\n        this.#commands.forEach((cmnd) =>\n        {\n            node.send({ \"payload\": `${cmnd.name} => ${cmnd.description}` });\n        });\n    }\n\n    execute(msg)\n    {\n        var cmnd = msg.command;\n        const arg = msg.payload;\n\n        if (cmnd == \"GetHelp\")\n        {\n            this.#getHelp();\n            return;\n        }\n\n        cmnd = this.#commands.find((c) => c.name == cmnd);\n\n        if (cmnd == undefined)\n        {\n            msg.payload = \"Unknow command.\";\n            node.send(msg);\n            return;\n        }\n        else\n        {\n            msg.payload = cmnd.execute(arg);\n            node.send(msg);\n        }\n    }\n}\n\nconst commands = new nsCommands();\nflow.set(\"nsCommands\", commands);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 2260,
+        "wires": [
+            [
+                "cdb046f7943f392d"
+            ]
+        ]
+    },
+    {
+        "id": "6881cc2777d451ee",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "OnInput",
+        "mode": "link",
+        "links": [
+            "c5d95f86cb576540"
+        ],
+        "x": 740,
+        "y": 2520,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "3cd7723a58cca46d",
+        "type": "comment",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "NSPanelRed v1.0 => https://github.com/mulder82",
+        "info": "",
+        "x": 620,
+        "y": 2560,
+        "wires": [],
+        "icon": "font-awesome/fa-info-circle"
+    },
+    {
+        "id": "c5d95f86cb576540",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b49ddf06c02d88a3",
+        "name": "OnInput",
+        "links": [
+            "6881cc2777d451ee"
+        ],
+        "x": 90,
+        "y": 2300,
+        "wires": [
+            [
+                "c6e3e36a364b81f8"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "c6e3e36a364b81f8",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "b49ddf06c02d88a3",
+        "name": "Process Input",
+        "func": "const nsCommands = flow.get(\"nsCommands\");\nnsCommands.execute(msg);\nreturn null;",
+        "outputs": 0,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "cdb046f7943f392d",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "b49ddf06c02d88a3",
+        "name": "SendOutput",
+        "mode": "link",
+        "links": [
+            "9df46d2fd94fcb44"
+        ],
+        "x": 730,
+        "y": 2260,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "c06725e093e75326",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "b49ddf06c02d88a3",
+        "name": "OnInit",
+        "links": [
+            "11b681b1dbcd85bf"
+        ],
+        "x": 90,
+        "y": 2260,
+        "wires": [
+            [
+                "88744b7dde4d2630"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "898aa87ee65ad5c4",
+        "type": "link out",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "SendOutput",
+        "mode": "link",
+        "links": [
+            "9df46d2fd94fcb44"
+        ],
+        "x": 730,
+        "y": 2140,
+        "wires": [],
+        "l": true
+    },
+    {
+        "id": "229f388d4580b131",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnPanelOnline",
+        "links": [
+            "5a88cc65bb50bd45"
+        ],
+        "x": 120,
+        "y": 2120,
+        "wires": [
+            [
+                "68e2cbd122a24bdf"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "68e2cbd122a24bdf",
+        "type": "change",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "Online",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Online",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 2120,
+        "wires": [
+            [
+                "898aa87ee65ad5c4"
+            ]
+        ]
+    },
+    {
+        "id": "bda40dab8f043cb8",
+        "type": "change",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "Offline",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Offline",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 2160,
+        "wires": [
+            [
+                "898aa87ee65ad5c4"
+            ]
+        ]
+    },
+    {
+        "id": "8d16d782e304fae2",
+        "type": "link in",
+        "z": "9f35391991156165",
+        "g": "00bb2c83f2b56264",
+        "name": "OnPanelOffline",
+        "links": [
+            "3a57b51c2a595730"
+        ],
+        "x": 120,
+        "y": 2160,
+        "wires": [
+            [
+                "bda40dab8f043cb8"
+            ]
+        ],
+        "l": true
+    },
+    {
+        "id": "aa91ec6527b9c6bd",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "Set Name/Group",
+        "func": "const config = env.get(\"config\");\n\nif (config.name != undefined) \n{\n    msg.nsPanel = config.name;\n}\n\nif (config.group != undefined)\n{\n    msg.nsGroup = config.group;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 2400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7d0a9325425f560",
+        "type": "function",
+        "z": "9f35391991156165",
+        "g": "4c7aaa55729dde21",
+        "name": "Check Name/Group",
+        "func": "const config = env.get(\"config\");\n\nconst nameMath = msg.nsPanel == undefined || (msg.nsPanel == config.name);\nconst groupMath = msg.nsGroup == undefined || (msg.nsGroup == config.group);\n\nreturn (nameMath && groupMath) ? msg : null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 2520,
+        "wires": [
+            [
+                "6881cc2777d451ee"
+            ]
+        ]
+    }
+]
