@@ -1,8 +1,23 @@
 # NSPanelRed
 ## Easy integration of NSPanel with HomeAssistant using NodeRed
+Demo video
 [![Watch the video](https://img.youtube.com/vi/9W-PcG0hgpw/hqdefault.jpg)](https://www.youtube.com/watch?v=9W-PcG0hgpw)
 
+Photos
+
 ![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns001.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns002.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns003.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns004.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns005.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns006.jpg)
+
+![Screenshot](https://github.com/mulder82/NSPanelRed/blob/main/assets/ns007.jpg)
 # Features
 1. Fully functional HomeScreen with weather forecast from HomeAssistant, temperature display from internal sensor or home assistant entity and humidity display from specified sensor entity,
 2. Easy add widgets to control HomeAssistant entities and reacts when states change. Support of following widgets:
