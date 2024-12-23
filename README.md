@@ -34,9 +34,9 @@ Before setup use Ewelink app to update NSPanel to newest version.
 1. Flash NSPanel ESP32 with tasmota ([link](https://templates.blakadder.com/sonoff_NSPanel.html)),
 2. Apply Tasmota template:
 ```
-{"NAME":"NSPanel","GPIO":[0,0,0,0,3872,0,0,0,0,0,32,0,0,0,0,225,0,480,224,1,0,0,0,33,0,0,0,0,0,0,0,0,0,0,4736,0],"FLAG":0,"BASE":1,"CMND":"ADCParam1 2,11200,10000,3950 | Sleep 0 | BuzzerPWM 1"}
+{"NAME":"NSPanel","GPIO":[0,0,0,0,3872,0,0,0,0,0,32,0,0,0,0,225,0,480,224,1,0,0,0,33,0,0,0,0,0,0,0,0,0,0,4736,0],"FLAG":0,"BASE":1,"CMND":"ADCParam1 2,11200,10000,3950 | Sleep 0 | BuzzerPWM 1 | SetOption13 1"}
 ```
-3. Upload modified driver [nspanel.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/nspanel.be) and [aoutoexec.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/autoexec.be) files to tasmota file system and restart NSPanel, 
+3. Upload modified driver [nspanel.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/nspanel.be) and [autoexec.be](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/berry/autoexec.be) files to tasmota file system and restart NSPanel, 
 4. Connect tasmota to MQTT broker ([link](https://www.youtube.com/watch?v=rdCJGnWSJXE)),
 5. Import [NSPanelRed subflow](https://raw.githubusercontent.com/mulder82/NSPanelRed/refs/heads/main/nodered/NSPanel.json) to NodeRed ([link](https://nodered.org/docs/user-guide/editor/workspace/import-export)),
 6. Configure subflow.
