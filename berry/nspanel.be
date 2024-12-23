@@ -1,4 +1,5 @@
 # Sonoff NSPanel Tasmota driver v0.47 | code by blakadder and s-hadinger
+# Modified by mulder82 as part of NSPanelRed project (https://github.com/mulder82/NSPanelRed)
 class NSPanel : Driver
   
   static types = {
