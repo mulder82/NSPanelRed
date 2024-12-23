@@ -166,14 +166,14 @@ temperature_calibration|Temperature calibration, this value is added to input te
 temperature_multipler|Temperature multipler, input temperature is multiplied by this value before send to screen|number|YES
 humidity|Humidity entity name|string|YES
 thermostat|Thermostat object|object|NO
-thermostat.type|Type of thermostat, hot or cold|string|NO
+thermostat.type|Type of thermostat|string (hot or cold)|NO
 thermostat.hysteresis|Thermostat hysteresis|number|NO
-thermostat.entities|Array os entities to control (on/off) by thermostat|Array of string|NO
-widgets|Array of widget object (max 8)|Array of object|NO
+thermostat.entities|Array of entities to control (on/off) by thermostat|Array of string|NO
+widgets|Array of widget object|Array of object (max 8)|NO
 widget.index|Widget index on screen|number (1-8)|YES
 widget.ctype|Widget type|device, group or scene|YES
-widget.uiid|Widget uiid (hswitch, vswitch, curtain, rgblight, dimmablelight, cctlight, rgbcctlight, acc), scene doesnt have uiid|string|YES
-widget.label|Widget label dispayed on screen (max 8 chars)|string|NO
+widget.uiid|Widget uiid (scene dont have uiid)|string (hswitch, vswitch, curtain, rgblight, dimmablelight, cctlight, rgbcctlight, acc)|YES
+widget.label|Widget label dispayed on screen|string (max 8 chars)|NO
 widget.entities|Array of entities controled by widget. State of all entities will be set by widget but state of only first entity in array will be reflected on screen|array of string|YES
 ## Commands
 > [!IMPORTANT]  
