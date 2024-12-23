@@ -168,13 +168,13 @@ humidity|Humidity entity name|string|YES
 thermostat|Thermostat object|object|NO
 thermostat.type|Type of thermostat|string (hot or cold)|NO
 thermostat.hysteresis|Thermostat hysteresis|number|NO
-thermostat.entities|Array of entities to control (on/off) by thermostat|Array of string|NO
-widgets|Array of widget object|Array of object (max 8)|NO
+thermostat.entities|array of entities to control (on/off) by thermostat|array of string|NO
+widgets|array of widget object|array of object (max 8)|NO
 widget.index|Widget index on screen|number (1-8)|YES
-widget.ctype|Widget type|device, group or scene|YES
+widget.ctype|Widget type|string (device, group or scene)|YES
 widget.uiid|Widget uiid (scene dont have uiid)|string (hswitch, vswitch, curtain, rgblight, dimmablelight, cctlight, rgbcctlight, acc)|YES
 widget.label|Widget label dispayed on screen|string (max 8 chars)|NO
-widget.entities|Array of entities controled by widget. State of all entities will be set by widget but state of only first entity in array will be reflected on screen|array of string|YES
+widget.entities|array of entities controled by widget. State of all entities will be set by widget but state of only first entity in array will be reflected on screen|array of string|YES
 ## Commands
 > [!IMPORTANT]  
 > If panel name or group is set in config all command messages for this display must have corresponding nsPanel/nsGroup keys with valid values. e.g. You have two panels on the first floor and two on the second floor with in groups “FirstFloor” and “SecondFloor” and you want all the panels on the first floor to restart, to do this you need to send a message: { “command”: “Restart”, “nsGroup”: “FirstFloor”}.  
