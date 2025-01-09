@@ -205,3 +205,5 @@ Buzzer.Info|Play single info sound from internal buzzer|None
 Buzzer.Confirm|Play single confirm sound from internal buzzer|None
 Buzzer.Error|Play single error sound from internal buzzer|None
 Buzzer.Alarm|Play single alarm sound from internal buzzer|None
+## Troubleshooting
+If you get errors in debug view like: "entity [entity name] not found" or widgets errors recurring every second then edit NSPanel subflow and increase delay in "Init 0.1" node from default 0.1 second to 1 or more depending on how much time the HomeAssistant add-on takes to retrieve the list of entities.
